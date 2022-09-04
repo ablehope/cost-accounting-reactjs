@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './CostForm.css'
 
-export default function CostForm() {
+export default function CostForm(props) {
 
     const [ name, setName ] = useState('')
     const [ amount, setAmount ] = useState('')
@@ -20,7 +20,8 @@ export default function CostForm() {
     }
 
     function onSubmitHandler(e) {
-        console.log(name, amount, date)
+        props.onSaveCostDataHandler(name, amount, date)
+        // console.log(name, amount, date)
         e.preventDefault()
         setName('')
         setAmount('')

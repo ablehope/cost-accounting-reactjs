@@ -2,11 +2,18 @@ import Costs from "./components/Costs/Costs";
 import NewCost from "./components/NewCost/NewCost";
 
 function App() {
+
+  function addCostHandler(costData) {
+    const data = {
+      ...costData
+    }
+    console.log('App component', data)
+  }
+
   return (
     <div>
-      <h1>Costs</h1>
-        <NewCost />
-        <Costs />
+      <NewCost costHandler={addCostHandler} />
+      <Costs />
     </div>
   );
 }
