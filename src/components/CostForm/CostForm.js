@@ -21,7 +21,6 @@ export default function CostForm(props) {
 
     function onSubmitHandler(e) {
         props.onSaveCostDataHandler(name, amount, date)
-        // console.log(name, amount, date)
         e.preventDefault()
         setName('')
         setAmount('')

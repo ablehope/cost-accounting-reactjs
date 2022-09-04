@@ -1,11 +1,11 @@
 import './CostDate.css';
 
-export default function CostDate() {
+export default function CostDate(props) {
     return(
         <div className="cost-date">
-            <div className="cost-date__year">year</div>
-            <div className="cost-date__month">month</div>
-            <div className="cost-date__day">day</div>
+            <div className="cost-date__year">{props.date.split('-')[0]}</div>
+            <div className="cost-date__month">{props.date.split('-')[1]}</div>
+            <div className="cost-date__day">{props.date.split('-')[2]}</div>
         </div>
     )
 }

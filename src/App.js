@@ -1,19 +1,19 @@
 import Costs from "./components/Costs/Costs";
 import NewCost from "./components/NewCost/NewCost";
+import {useState} from "react";
 
 function App() {
 
+  const [ cost, setCost ] = useState([])
+
   function addCostHandler(costData) {
-    const data = {
-      ...costData
-    }
-    console.log('App component', data)
+    setCost(cost.concat(costData))
   }
 
   return (
     <div>
       <NewCost costHandler={addCostHandler} />
-      <Costs />
+      <Costs costs={cost} />
     </div>
   );
 }
