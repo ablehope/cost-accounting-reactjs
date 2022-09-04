@@ -1,7 +1,18 @@
 import './NewCost.css'
 import CostForm from "../CostForm/CostForm";
+import React, {useState} from "react";
 
 export default function NewCost(props) {
+
+    const [ visible, setVisible ] = useState(false)
+
+    function openFormHandler() {
+        setVisible(true)
+    }
+
+    function closeFormHandler() {
+        setVisible(false)
+    }
 
    function saveCostdataHandler(name, amount, date) {
        const costData = {
@@ -11,13 +22,17 @@ export default function NewCost(props) {
            id: Math.random().toString()
        }
        props.costHandler(costData)
-       console.log('new cost component', costData)
+       closeFormHandler()
    }
 
     return (
         <div className="new-cost">
-            <h1>Cost Accounting</h1>
-            <CostForm onSaveCostDataHandler={saveCostdataHandler} />
+            <h1>Учет расходов</h1>
+            {!visible &&
+            <button onClick={openFormHandler}>Добавить новый расход</button>}
+            {visible &&
+            <CostForm onSaveCostDataHandler={saveCostdataHandler}
+                      closeFormHandler={closeFormHandler}/>}
         </div>
     )
 }
